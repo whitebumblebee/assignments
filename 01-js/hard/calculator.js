@@ -15,7 +15,48 @@
 
   Once you've implemented the logic, test your code by running
 */
+class Calculator {
 
-class Calculator {}
+  constructor() {
+    this.result = 0;
+  }
+
+  add(num) {
+    this.result += num;
+  }
+
+  subtract(num) {
+    this.result -= num;
+  }
+
+  multiply(num) {
+    this.result *= num;
+  }
+
+  divide(num) {
+    if (num === 0) throw new Error("Division by zero error");
+    this.result /= num;
+  }
+
+  clear() {
+    this.result = 0;
+  }
+
+  getResult() {
+    return this.result;
+  }
+
+  calculate(data) {
+    data = data.replace(/\s+/g, "");
+
+    const result = eval(data);
+
+    if (isNaN(result) || !isFinite(result)) {
+      throw Error("Invalid expression");
+    }
+    this.result = result;
+  }
+  
+  }
 
 module.exports = Calculator;
